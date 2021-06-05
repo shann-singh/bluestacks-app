@@ -16,7 +16,7 @@ const Home = ({ list }) => {
 export default Home;
 
 export async function getServerSideProps(context) {
-  const publicRuntimeConfig = await getConfig();
+  const { publicRuntimeConfig } = await getConfig();
   const dev = process.env.NODE_ENV !== "production";
   const apiurl = dev
     ? "http://localhost:3001"
