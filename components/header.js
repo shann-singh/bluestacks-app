@@ -43,7 +43,7 @@ const Header = () => {
     <div>
       <Navbar bg='dark' expand='lg' fixed='top'>
         <Navbar.Brand href='/' className={styles.navbarBrand}>
-          Bluestacks Full Stack Web App
+          Bluestacks App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse
