@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/Video.module.css";
 import YouTube from "react-youtube";
 import { numberFormat } from "../util";
+import getConfig from "next/config";
 
 const Video = ({ videoDetail, channelDetail }) => {
   return (
@@ -105,6 +106,7 @@ const Video = ({ videoDetail, channelDetail }) => {
 export default Video;
 
 export async function getServerSideProps(req, res) {
+  const { publicRuntimeConfig } = await getConfig();
   const { id } = req.query;
   const dev = process.env.NODE_ENV !== "production";
   const apiurl = dev
