@@ -1,3 +1,89 @@
 .body {
+  margin-top: 56px;
   padding: 40px;
+  min-height: 100vh;
+}
+
+.videoSection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.videoSection h2 {
+  margin-top: 100px;
+}
+
+.videoDiv {
+  max-width: 280px;
+}
+
+.videoDiv a {
+  text-decoration: none;
+}
+
+.videoDiv a ::hover {
+  color: grey;
+}
+
+.img {
+  width: 280px;
+}
+
+.videoTitle {
+  margin-top: 15px;
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
+}
+
+.videoTitle::hover {
+  color: grey;
+}
+
+.emptyDiv {
+  width: 280px;
+  height: 0;
+}
+
+.channelTitle {
+  color: gray;
+  font-size: 14px;
+  margin: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.videoTime {
+  color: gray;
+  font-size: smaller;
+}
+
+.videoListEndSection {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.videoListEndText {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 610px) {
+  .img {
+    width: 100%;
+  }
 }

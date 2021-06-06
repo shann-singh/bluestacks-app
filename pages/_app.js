@@ -1,12 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 import Layout from "../components/layout";
+import SnackbarProvider from "react-simple-snackbar";
+import { VideoProvider } from "../components/videoContext";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SnackbarProvider>
+      <VideoProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </VideoProvider>
+    </SnackbarProvider>
   );
 }
 
