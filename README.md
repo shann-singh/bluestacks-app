@@ -13,7 +13,7 @@ The APP is currently hosted using Vercel at https://bluestacks-app.vercel.app.
 git clone https://github.com/shann-singh/bluestacks-app
 cd bluestacks-app
 npm install
-create .env file with necessary variable
+create .env.local file with necessary variable
 edit api url in next.config.js
 npm run dev
 ```
@@ -24,7 +24,7 @@ npm run dev
 git clone https://github.com/shann-singh/bluestacks-app
 cd bluestacks-app
 npm install
-create .env file with necessary variable
+create .env.production file with necessary variable
 edit api url in next.config.js
 npm run build
 pm2 start npm --name app-name -- start 
