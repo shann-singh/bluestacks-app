@@ -3,6 +3,7 @@ import styles from "../styles/Video.module.css";
 import YouTube from "react-youtube";
 import { numberFormat } from "../util";
 import getConfig from "next/config";
+import Head from "next/head";
 
 // on the page, whole data is fetched and page
 // rendered on the server side
