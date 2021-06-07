@@ -21,11 +21,16 @@ const Home = ({ list }) => {
   const [openSnackbar, closeSnackbar] = useSnackbar(snackBarOptions);
   const [loadMore, setLoadMore] = useState(true);
 
+  // sets empty div in case video list length 
+  // is not a multiple of 4
+  // to properly align the videos
   useEffect(() => {
     let mod = videoList.length % 4;
     setEmptyDiv(mod);
   }, [videoList]);
 
+  // re-fetchs the video list if more videos added to the database
+  // fetchs the 0 or first page videos and scrolls automatically to the top
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,6 +60,8 @@ const Home = ({ list }) => {
     }
   }, [listUpdated]);
 
+  // to fetch next 20 videos in case of continuos scrolling
+  // once videos list is exhausted, sets loadmore to false
   const fetchMoreVideos = async () => {
     try {
       const response = await axios({
@@ -77,10 +84,11 @@ const Home = ({ list }) => {
     }
   };
 
-  const refresh = () => {};
-
   return (
     <div className={styles.body}>
+      <Head>
+        <title>Bluestacks App | Homepage</title>
+      </Head>
       <div className={styles.videoSection}>
         {videoList.length === 0 ? (
           <div className='noVideoSection'>

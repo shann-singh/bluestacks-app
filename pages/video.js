@@ -4,9 +4,18 @@ import YouTube from "react-youtube";
 import { numberFormat } from "../util";
 import getConfig from "next/config";
 
+// on the page, whole data is fetched and page
+// rendered on the server side
+// This page only presents the data as per the layout
 const Video = ({ videoDetail, channelDetail }) => {
   return (
     <div className={styles.body}>
+      {/* head */}
+      <Head>
+        <title>Bluestacks App | {videoDetail.snippet.title}</title>
+      </Head>
+
+      {/* YouTube video player, plays the audio once ready */}
       <YouTube
         className={styles.youtube}
         videoId={videoDetail.id}
@@ -14,6 +23,7 @@ const Video = ({ videoDetail, channelDetail }) => {
           e.target.playVideo();
         }}
       />
+      {/* video and channel details section */}
       <div className={styles.detailsSection}>
         <p className={styles.videoTitle}>{videoDetail.snippet.title}</p>
         <div className={styles.infoSection}>
@@ -62,6 +72,9 @@ const Video = ({ videoDetail, channelDetail }) => {
         <div className={styles.videoDescription}>
           {videoDetail.snippet.description}
         </div>
+
+        {/* a short youtube url of the video, opens in
+        a new window */}
         <div className={styles.videoLink}>
           Watch it on YouTube :{" "}
           <a
@@ -69,6 +82,8 @@ const Video = ({ videoDetail, channelDetail }) => {
             target='_blank'
           >{`https://youtu.be/${videoDetail.id}`}</a>
         </div>
+
+        {/* displays the tags only if available */}
         {videoDetail.snippet.tags ? (
           <div>
             {videoDetail.snippet.tags.map((item, index) => {
@@ -117,6 +132,7 @@ export async function getServerSideProps(req, res) {
   let videoDetail;
   let channelDetail;
   try {
+    // getting the video and channel details from the API
     const response = await fetch(
       `${apiurl}/videos/video-details?videoId=${id}`,
       {
