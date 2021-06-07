@@ -110,10 +110,12 @@ const Video = ({ videoDetail, channelDetail }) => {
               alt='channel logo'
             />
           </p>
-          <p className={styles.subsCount}>
-            {numberFormat(channelDetail.statistics.subscriberCount)}{" "}
-            subscribers
-          </p>
+          {!channelDetail.statistics.hiddenSubscriberCount ? (
+            <p className={styles.subsCount}>
+              {numberFormat(channelDetail.statistics.subscriberCount)}{" "}
+              subscribers
+            </p>
+          ) : null}
           <p>{channelDetail.snippet.description}</p>
         </div>
       </div>
