@@ -69,19 +69,21 @@ const Video = ({ videoDetail, channelDetail }) => {
             target='_blank'
           >{`https://youtu.be/${videoDetail.id}`}</a>
         </div>
-        <div>
-          {videoDetail.snippet.tags.map((item, index) => {
-            return (
-              <div
-                key={index}
-                style={{ display: "inline-block" }}
-                className={styles.tags}
-              >
-                <p>#{item}</p>
-              </div>
-            );
-          })}
-        </div>
+        {videoDetail.snippet.tags ? (
+          <div>
+            {videoDetail.snippet.tags.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  style={{ display: "inline-block" }}
+                  className={styles.tags}
+                >
+                  <p>#{item}</p>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
         <div className={styles.channelDescription}>
           <p className={styles.cTitle}>
             About {channelDetail.snippet.title}
@@ -130,7 +132,6 @@ export async function getServerSideProps(req, res) {
     let detailsjson = await response.json();
     videoDetail = detailsjson.videoDetail;
     channelDetail = detailsjson.channelDetail;
-    console.log(details);
   } catch (error) {
     console.log(error);
   }
