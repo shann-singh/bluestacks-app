@@ -20,12 +20,14 @@ const Home = ({ list }) => {
   const [openSnackbar, closeSnackbar] = useSnackbar(snackBarOptions);
   const [loadMore, setLoadMore] = useState(true);
 
-  // sets empty div in case video list length 
+  // sets empty div in case video list length
   // is not a multiple of 4
   // to properly align the videos
   useEffect(() => {
     let mod = videoList.length % 4;
-    setEmptyDiv(mod);
+    if (mod !== 0) {
+      setEmptyDiv(4 - mod);
+    }
   }, [videoList]);
 
   // re-fetchs the video list if more videos added to the database
@@ -68,7 +70,6 @@ const Home = ({ list }) => {
         url: process.env.NEXT_PUBLIC_API_URL + "/videos/list-all",
         params: { page: page + 1 },
       });
-      console.log("fetchMore");
       setPage(page + 1);
       const videos = response.data.list;
       if (videos.length === 0) {
