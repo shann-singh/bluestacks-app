@@ -92,7 +92,7 @@ const Home = ({ list }) => {
         ) : (
           <InfiniteScroll
             className={styles.videoSection}
-            dataLength={page * 10} //This is important field to render the next data
+            dataLength={page * 12} //This is important field to render the next data
             next={fetchMoreVideos}
             hasMore={loadMore}
             loader={<Spinner />}
